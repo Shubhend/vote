@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+          name="description"
+          content="Web site created using create-react-app"
+  />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+  <!-- CSS here -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/slicknav.css">
+  <link rel="stylesheet" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
+  <link rel="stylesheet" href="assets/css/gijgo.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/animated-headline.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/css/slick.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
+    Notice the use of %PUBLIC_URL% in the tags above.
+    It will be replaced with the URL of the `public` folder during the build.
+    Only files inside the `public` folder can be referenced from the HTML.
+
+    Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+    work correctly both with client-side routing and a non-root public URL.
+    Learn how to configure a non-root public URL by running `npm run build`.
+  -->
+  <title>React App</title>
+
+  <style>
+
+    .loginback{
+      background-image: url("https://images.unsplash.com/photo-1557683311-eac922347aa1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Ymx1ZSUyMGFuZCUyMHB1cnBsZSUyMGdyYWRpZW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
+      background-size: cover;
+    }
+
+
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    textarea.form-control {
+      height: 50px;
+      margin: 0;
+      padding: 0 20px;
+      vertical-align: middle;
+      background: #fff;
+      border: 3px solid #fff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 50px;
+      color: #888;
+      -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+      -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+      -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+    }
+
+    textarea,
+    textarea.form-control {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      line-height: 30px;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    textarea:focus,
+    textarea.form-control:focus {
+      outline: 0;
+      background: #fff;
+      border: 3px solid #fff;
+      -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    }
+
+    input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder,
+    textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
+
+    input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder,
+    textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #888; }
+
+    input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
+
+
+    button.btn:hover { opacity: 0.6; color: #fff; }
+
+    button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+    button.btn:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
+
+    button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
+
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: #888;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    strong { font-weight: 500; }
+
+    a, a:hover, a:focus {
+      color: #19b9e7;
+      text-decoration: none;
+      -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+    }
+
+    h1, h2 {
+      margin-top: 10px;
+      font-size: 38px;
+      font-weight: 100;
+      color: #555;
+      line-height: 50px;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 300;
+      color: #555;
+      line-height: 30px;
+    }
+
+    img { max-width: 100%; }
+
+    ::-moz-selection { background: #19b9e7; color: #fff; text-shadow: none; }
+    ::selection { background: #19b9e7; color: #fff; text-shadow: none; }
+
+
+    .btn-link-1 {
+      display: inline-block;
+      height: 50px;
+      margin: 5px;
+      padding: 16px 20px 0 20px;
+      background: #19b9e7;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 16px;
+      color: #fff;
+      -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    }
+    .btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
+
+    .btn-link-1.btn-link-1-facebook { background: #4862a3; }
+    .btn-link-1.btn-link-1-twitter { background: #55acee; }
+    .btn-link-1.btn-link-1-google-plus { background: #dd4b39; }
+
+    .btn-link-1 i {
+      padding-right: 5px;
+      vertical-align: middle;
+      font-size: 20px;
+      line-height: 20px;
+    }
+
+    .btn-link-2 {
+      display: inline-block;
+      height: 50px;
+      margin: 5px;
+      padding: 15px 20px 0 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid #fff;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 16px;
+      color: #fff;
+      -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    }
+    .btn-link-2:hover, .btn-link-2:focus,
+    .btn-link-2:active, .btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
+
+    .btn-link-2 i {
+      padding-right: 5px;
+      vertical-align: middle;
+      font-size: 20px;
+      line-height: 20px;
+    }
+
+
+    /***** Top content *****/
+
+    .inner-bg {
+      padding: 60px 0 80px 0;
+    }
+
+    .top-content .text {
+      color: #fff;
+    }
+
+    .top-content .text h1 { color: #fff; }
+
+    .top-content .description {
+      margin: 20px 0 10px 0;
+    }
+
+    .top-content .description p { opacity: 0.8; }
+
+    .top-content .description a {
+      color: #fff;
+    }
+    .top-content .description a:hover,
+    .top-content .description a:focus { border-bottom: 1px dotted #fff; }
+
+    .form-box {
+      margin-top: 70px;
+    }
+
+    .form-top {
+      overflow: hidden;
+      padding: 0 25px 15px 25px;
+      background: #444;
+      background: rgba(0, 0, 0, 0.35);
+      -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+      text-align: left;
+    }
+
+    .form-top-left {
+      float: left;
+      width: 75%;
+      padding-top: 25px;
+    }
+
+    .form-top-left h3 { margin-top: 0; color: #fff; }
+    .form-top-left p { opacity: 0.8; color: #fff; }
+
+    .form-top-right {
+      float: left;
+      width: 25%;
+      padding-top: 5px;
+      font-size: 66px;
+      color: #fff;
+      line-height: 100px;
+      text-align: right;
+      opacity: 0.3;
+    }
+
+    .form-bottom {
+      padding: 25px 25px 30px 25px;
+      background: #444;
+      background: rgba(0, 0, 0, 0.3);
+      -moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
+      text-align: left;
+    }
+
+    .form-bottom form textarea {
+      height: 100px;
+    }
+
+    .form-bottom form button.btn {
+      width: 100%;
+    }
+
+    .form-bottom form .input-error {
+      border-color: #19b9e7;
+    }
+
+    .social-login {
+      margin-top: 35px;
+    }
+
+    .social-login h3 {
+      color: #fff;
+    }
+
+    .social-login-buttons {
+      margin-top: 25px;
+    }
+
+    .middle-border {
+      min-height: 300px;
+      margin-top: 170px;
+      border-right: 1px solid #fff;
+      border-right: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+
+    /***** Footer *****/
+
+    footer {
+      padding-bottom: 70px;
+      color: #fff;
+    }
+
+    footer .footer-border {
+      width: 200px;
+      margin: 0 auto;
+      padding-bottom: 30px;
+      border-top: 1px solid #fff;
+      border-top: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    footer p { opacity: 0.8; }
+
+    footer a {
+      color: #fff;
+    }
+    footer a:hover, footer a:focus { color: #fff; border-bottom: 1px dotted #fff; }
+
+
+    /***** Media queries *****/
+
+    @media (min-width: 992px) and (max-width: 1199px) {}
+
+    @media (min-width: 768px) and (max-width: 991px) {}
+
+    @media (max-width: 767px) {
+
+      .middle-border { min-height: auto; margin: 65px 30px 0 30px; border-right: 0;
+        border-top: 1px solid #fff; border-top: 1px solid rgba(255, 255, 255, 0.6); }
+
+    }
+
+    @media (max-width: 415px) {
+
+      h1, h2 { font-size: 32px; }
+
+    }
+
+
+  </style>
+
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+</body>
+<!-- JS here -->
+<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/js/popper.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="./assets/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/slick.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="./assets/js/wow.min.js"></script>
+<script src="./assets/js/animated.headline.js"></script>
+<script src="./assets/js/jquery.magnific-popup.js"></script>
+
+<!-- Date Picker -->
+<script src="./assets/js/gijgo.min.js"></script>
+<!-- Nice-select, sticky -->
+<script src="./assets/js/jquery.nice-select.min.js"></script>
+<script src="./assets/js/jquery.sticky.js"></script>
+<!-- Progress -->
+<script src="./assets/js/jquery.barfiller.js"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="./assets/js/jquery.counterup.min.js"></script>
+<script src="./assets/js/waypoints.min.js"></script>
+<script src="./assets/js/jquery.countdown.min.js"></script>
+<script src="./assets/js/hover-direction-snake.min.js"></script>
+
+<!-- contact js -->
+<script src="./assets/js/contact.js"></script>
+<script src="./assets/js/jquery.form.js"></script>
+<script src="./assets/js/jquery.validate.min.js"></script>
+<script src="./assets/js/mail-script.js"></script>
+<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/main.js"></script>
+<script>
+
+
+</script>
+
+</html>
