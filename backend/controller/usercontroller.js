@@ -1,22 +1,25 @@
-const User = require('../models/usersmodel');
+const UserModal = require('../config/config');
 const Express = require('express');
 const asynchandler = require('express-async-handler');
 
-const generatetocken = require("../utils/generatetocken");
+
+const UserService = require("../Service/UserService");
+const Utilsservice = require("../utils/generatetocken");
+const bcrypt = require("bcrypt");
+const {CheckImage, UploadProfileImage, unlinkAssets} = require("../Service/AssetsService");
+const User=UserModal.user;
 
 
 
-
-const registeruser = asynchandler(
-    async (req,res)=>{
+const registeruser = asynchandler(async (req,res)=>{
 
        const {email,name,password} = req.body;
 
-       const send={};
+        const send={};
         send.err=0;
-       send.msg='';
+        send.msg='';
 
-      const userexist = await User.findOne({email});
+      const userexist = await UserModal.user.findOne({where:{ 'email': email }});
 
       if(userexist){
           send.err=1;
@@ -25,12 +28,15 @@ const registeruser = asynchandler(
 
       }
 
-      const user= await User.create({name,email,password});
+       hashpasswords= await UserService.generatePassword(password);
+
+      console.log(hashpasswords);
+      const user= await User.create({name,email,password:hashpasswords});
       if(user){
           send.err=0;
-          send.msg='User Already Exist';
+          send.msg='User Recorded';
           send.data={
-              _id: user._id,
+              id: user.id,
               name:user.name,
               email:user.email
           }
@@ -47,40 +53,95 @@ const registeruser = asynchandler(
 const authcontroller = asynchandler(
     async (req,res)=>{
 
+        const send={};
+        send.err=0;
+        send.msg='';
         const {email,password} = req.body;
-        const user= await User.findOne({email})
-        if(user && user.matchpassword(password)){
+        const user= await User.findOne({where:{email}})
+
+        if(!user){
+            send.err=1;
+            send.msg='User Not Found, Please Register';
+            res.send(send);
+        }
+
+        const result= await UserService.ComparePassword(password,user.password);
+
+        if(user && result){
             res.json({
-                _id: user._id,
+                err:0,
+                msg:'Logged In',
+                id: user.id,
                 name:user.name,
                 email:user.email,
-                token: generatetocken(user._id)
+                token: Utilsservice.generatetocken(user)
             });
 
         }else{
-            res.send("not found");
+            send.err=1;
+            send.msg='Wrong Credentials';
+            res.send(send);
 
         }
     }
 )
 
+
+
+const UpdateUserProfile = asynchandler( async(req,res)=>{
+
+    console.log(req.user.id);
+
+    const user = await User.update(req.body, { where: { id: req.user.id } });
+    if(user){
+
+        res.json({
+            err:0,
+           msg:'Data Updated'
+        })
+
+    }
+
+})
+
+
+const UploadProfile = asynchandler(
+    async (req,res)=>{
+
+       const data= await UploadProfileImage(res,req);
+        const user = await User.findByPk(req.user.id)
+
+       console.log(req.user);
+
+       if(data.err==0){
+
+            await User.update({image: data.data }, { where: { id: req.user.id } });
+
+            unlinkAssets(user.image);
+       }
+
+        res.json({
+            err:0,
+            msg:'Data Updated'
+        })
+
+    }
+)
 
 const getuserprofile = asynchandler(
     async (req,res)=>{
 
-const user = await User.findById(req.user._id)
+        const user = await User.findByPk(req.user.id)
         if(user){
 
-            res.json({
-                _id: user._id,
-                name:user.name,
-                email:user.email,
-                token: generatetocken(user._id)
-            })
+            delete  user.password;
+            user.image=await CheckImage(user.image);
+
+            res.json(user)
 
         }
 
     }
 )
 
-module.exports={authcontroller,getuserprofile,registeruser};
+module.exports={authcontroller,getuserprofile,registeruser,UpdateUserProfile,UploadProfile};

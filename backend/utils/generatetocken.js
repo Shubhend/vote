@@ -7,6 +7,6 @@ const generatetocken = (id) => {
     });
 };
 
-module.exports=generatetocken;
+module.exports.generatetocken=generatetocken;
 
 

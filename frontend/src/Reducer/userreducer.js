@@ -1,11 +1,19 @@
-import {REGISTER} from "../Constant/constant";
+import {USERREGISTER,USERLOGIN,USERLOGOUT} from "../Constant/UserConstant";
 
-export const userreducer = (state,action) =>{
+export const userreducer = (state={},action) =>{
 
-    if(action.type==REGISTER){
+    switch (action.type){
+        case USERLOGIN:
+            return {userInfo:action.payload}
+        case USERREGISTER:
+            return {userInfo:action.payload}
+        case USERLOGOUT:
+            return {}
+        default:
+            return state;
 
-        return {result:action.payload}
     }
 
-    return state;
+
+
 }

@@ -1,26 +1,34 @@
-const express=require('express');
 
+const express=require('express');
+const cors=require('cors');
 const dotenv=require('dotenv');
 const Process = require("process");
-const userRoute = require('./routes/userroute');
+const apiRoutes = require('./routes/apiRoutes');
 const connectDb = require('./config/config')
 const {errorHandler} = require("./middleware/error");
 const bodyParser = require('body-parser')
+const path = require("path");
+var public = path.join('public');
 
 // connect to db
 dotenv.config();
-connectDb();
+
 
 const app=express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 //app.use('/api',productRoutes);
-app.use('/api/users',userRoute);
+// connectDb.sequelize.sync();
+app.use(cors())
+app.use(express.static(public))
+app.use('/api/',apiRoutes);
+
+app.get('/',(req,res)=>{
+    res.send('check');
+});
 
 app.use(errorHandler);
-app.get('/',(req,res)=>{
-   res.send('check');
-});
+
 
 
 //app.use(express.json);

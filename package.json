@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "proxy": "http://localhost:8082",
+  "homepage": "https://github.com/Shubhend/vote#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon backend/server",
@@ -21,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/Shubhend/vote/issues"
   },
-  "homepage": "https://github.com/Shubhend/vote#readme",
   "dependencies": {
     "axios": "^0.23.0",
     "bcrypt": "^5.0.1",
@@ -29,9 +29,17 @@
     "concurrently": "^6.3.0",
     "dotenv": "^10.0.0",
     "express-async-handler": "^1.1.4",
+    "html-react-parser": "^1.4.8",
     "http-proxy-middleware": "^2.0.1",
+    "js-string-compression": "^1.0.1",
     "jsonwebtoken": "^8.5.1",
+    "lz-string": "^1.4.4",
+    "lzwcompress": "^1.1.0",
     "mongoose": "^6.0.10",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "react-date-object": "^2.1.5",
+    "react-draft-wysiwyg": "^1.14.7",
+    "react-qr-code": "^2.0.3",
+    "react-qrcode-logo": "^2.5.0"
   }
 }

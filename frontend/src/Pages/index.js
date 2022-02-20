@@ -88,7 +88,7 @@ function Indexpage(){
                             <div className="properties pb-20">
                                 <div className="properties__card">
                                     <div className="properties__img overlay1">
-                                        <Link href="#"/><img src="assets/img/gallery/featured1.png" alt=""/>
+                                        <Link href="/"><img src="assets/img/gallery/featured1.png" alt=""/></Link>
                                     </div>
                                     <div className="properties__caption">
                                         <p>User Experience</p>
@@ -113,7 +113,7 @@ function Indexpage(){
                                                 <span>$135</span>
                                             </div>
                                         </div>
-                                        <Link to="/details" className="border-btn border-btn2"/>Find out more
+                                        <Link to="/details" className="border-btn border-btn2">Find out more</Link>
                                     </div>
 
                                 </div>
@@ -146,7 +146,7 @@ function Indexpage(){
                                                 <span>$135</span>
                                             </div>
                                         </div>
-                                        <Link href="#" className="border-btn border-btn2"/>Find out more
+                                        <Link href="#" className="border-btn border-btn2">Find out more</Link>
                                     </div>
                                 </div>
                             </div>
