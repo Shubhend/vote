@@ -4,6 +4,8 @@ import { Carousel } from "react-responsive-carousel";
 import { GetCampaignByUniqueId, UpdateTraffic } from "../../../Action/CampaignController.js";
 import { useParams } from "react-router-dom";
 import { checkimages } from "../Globals/GlobalFunction.js";
+import {useSelector} from "react-redux";
+import {vote} from "../../../Action/CampaignController";
 
 
 
@@ -18,6 +20,7 @@ function Detail({history}){
 
     const [campaign,setCampaign]=useState(defaultdata);
     const [media,setMedia]=useState([]);
+    const [votedata,setVotedata]=useState({});
 
 
 
@@ -37,13 +40,51 @@ useEffect( async ()=>{
 
     }
 
-},[]);
-  
 
+    setVotedata({
+        exactLocation:0,
+        device:navigator.userAgentData.platform
+    })
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+           alert("not support")
+        }
+
+
+
+},[]);
+
+    function showPosition(position) {
+
+        setVotedata({
+            longitude:position.coords.longitude,
+            latitude:position.coords.latitude,
+            exactLocation:1,
+            device:navigator.userAgentData.platform
+        })
+    }
+
+
+
+    const userLogged=useSelector(state => state.user);
 const voteClick = async ()=>{
 
     
     UpdateTraffic({campaignId:params.campId,clicks:1,type:'cl'});
+
+
+
+    if(userLogged && userLogged.userInfo){
+
+       await vote({...votedata,campaignId:params.campId});
+
+    }else{
+        alert("Not Loggedin ");
+    }
+
+
 
 }
 

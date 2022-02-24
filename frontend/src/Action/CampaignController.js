@@ -8,6 +8,14 @@ export const UpdateTraffic=  async (value) =>{
 
     const config = HEADERCONFIG;
     const {data} = await axiosHelper.post('/api/public/updateTraffic?campId='+value.campId,value,config)
+    return data;
+
+}
+
+export const vote=async (value)=>{
+
+    const config = HEADERCONFIG;
+    const {data} = await axiosHelper.post('/api/campaign/vote',value,config)
 
     return data;
 

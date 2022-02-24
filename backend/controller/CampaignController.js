@@ -3,7 +3,66 @@ const Modal = require('../config/config');
 const {CheckmediaImage, GetSimpleImage} = require("../Service/AssetsService");
 const {encode}= require('html-entities');
 const lzwCompress =require('lzwcompress');
+const {getIpDetails} = require('../utils/helpers')
+const ip = require('ip');
 
+
+
+const SetVote = asynchandler( async (req,res)=>{
+
+
+    req.body.userId= req.user.id;
+    req.body.ipAddress= ip.address();
+
+
+
+    const campaignData=await Modal.campaign.findOne({where:{
+
+            uniqueId:req.body.campaignId
+        }});
+
+    if(! campaignData){
+
+        res.json({
+            err:1,msg:'Campaign Not Found',undo:0
+        })
+        return true;
+    }
+
+    req.body.campaignId=campaignData.id;
+
+    const checkvote=await Modal.campaignVote.findOne({where:{
+        userId: req.user.id,
+            campaignId:req.body.campaignId
+        }});
+
+
+    if(checkvote){
+
+        res.json({
+            err:1,msg:'Already Voted',undo:1
+        })
+        return true;
+    }
+
+
+   var ipdeatils= await getIpDetails(ip.address());
+
+    if(ipdeatils){
+
+        req.body.country=ipdeatils.data.country;
+        req.body.state=ipdeatils.data.state;
+        req.body.city=ipdeatils.data.city;
+        req.body.locationResponse=ipdeatils.obj;
+    }
+
+
+
+     await Modal.campaignVote.create(req.body);
+
+      res.json({err:0,'msg':'done'});
+
+});
 
 
 const getCampaignByUniqueId = asynchandler( async (req,res)=>{
@@ -36,15 +95,10 @@ if(data){
 const newCampaign = asynchandler(
     async (req,res)=>{
 
-
-
-
        // req.body=req.body.data;
 
         req.body.keywords=JSON.stringify(req.body.keywords);
         req.body.description=encode(req.body.description);
-
-
 
         try{
 
@@ -141,4 +195,4 @@ const getCampaign = asynchandler(
 )
 
 
-module.exports={newCampaign,getCampaign,getCampaignByUniqueId};
+module.exports={newCampaign,getCampaign,getCampaignByUniqueId,SetVote};

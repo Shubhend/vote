@@ -16,6 +16,7 @@
     "formik": "^2.2.9",
     "html-to-draftjs": "^1.5.0",
     "http-proxy-middleware": "^2.0.2",
+    "ip": "^1.1.5",
     "react": "^17.0.2",
     "react-append-to-body": "^2.0.26",
     "react-device-detect": "^2.1.2",

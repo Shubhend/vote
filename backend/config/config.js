@@ -34,6 +34,7 @@ const {Sequelize} = require("sequelize");
        connectDb.campaign = require('./../models/campaignModel')(sequelize, Sequelize);
        connectDb.campaignmedia = require('./../models/campaignMediaModel')(sequelize, Sequelize);
        connectDb.campaignTraffic = require('./../models/campaignTrafficModel')(sequelize, Sequelize);
+       connectDb.campaignVote = require('./../models/votedUserModel')(sequelize, Sequelize);
 
 
        //
