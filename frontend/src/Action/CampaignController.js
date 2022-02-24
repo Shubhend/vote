@@ -3,6 +3,27 @@ import axiosHelper from "../Helper/axios";
 import Notify from "../Helper/notify";
 
 
+
+export const UpdateTraffic=  async (value) =>{
+
+    const config = HEADERCONFIG;
+    const {data} = await axiosHelper.post('/api/public/updateTraffic?campId='+value.campId,value,config)
+
+    return data;
+
+}
+
+
+export const GetCampaignByUniqueId=  async (value) =>{
+
+    const config = HEADERCONFIG;
+    const {data} = await axiosHelper.get('/api/campaign/getCampaignByUniqueId?id='+value,config)
+
+    return data;
+
+}
+
+
 export const CreateNewCampaign = async (values) =>{
 
     var formPayload = new FormData();

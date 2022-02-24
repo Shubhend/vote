@@ -5,15 +5,42 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+
 
 function Indexpage(){
 
     return(
-        <div>
+
+
+            <div className="main-content right-chat-active">
+
+                <div className="row">
 
             <main>
                 <section className="slider-area ">
                     <div className="slider-active">
+
+
+                        <Carousel>
+                            <div>
+                                <img src="/pub/voteIcon.png" />
+                                <p className="legend">Legend 1</p>
+                            </div>
+                            <div>
+                                <img src="/pub/voteIcon.png" />
+                                <p className="legend">Legend 2</p>
+                            </div>
+                            <div>
+                                <img src="/pub/voteIcon.png" />
+                                <p className="legend">Legend 3</p>
+                            </div>
+                        </Carousel>
+
+
+
+
 
                         <div className="single-slider slider-height d-flex align-items-center">
                             <div className="container">
@@ -532,7 +559,7 @@ function Indexpage(){
 
             </main>
 
-
+                </div>
 
 
         </div>

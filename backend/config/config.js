@@ -33,6 +33,7 @@ const {Sequelize} = require("sequelize");
        connectDb.city = require('./../models/citiesModel')(sequelize, Sequelize);
        connectDb.campaign = require('./../models/campaignModel')(sequelize, Sequelize);
        connectDb.campaignmedia = require('./../models/campaignMediaModel')(sequelize, Sequelize);
+       connectDb.campaignTraffic = require('./../models/campaignTrafficModel')(sequelize, Sequelize);
 
 
        //

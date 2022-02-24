@@ -25,6 +25,7 @@ import Include from "./layout/include";
 import { componentWillAppendToBody } from "react-append-to-body";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import {useSelector} from "react-redux";
+import Detail from "./Campaign/Detail.js";
 
 const AppendedMyComponent= componentWillAppendToBody(Include);
 

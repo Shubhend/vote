@@ -44,17 +44,18 @@ const CheckImage  = async (image) =>{
 }
 
 
-const CheckmediaImage  = async (image) =>{
+const CheckmediaImage  = (image) =>{
 
-    const result = await new Promise((resolve, reject) => {
+
+    var d=image;
         if (image == null || image == '') {
-            image = "/pub/common.jpg";
-            resolve(image);
+            d = "/pub/common.jpg";
+           
         }
 
-        resolve('/media/' + image);
-    });
-    return result;
+        d='/media/' + image;
+
+    return d;
 }
 
 const UploadProfileImage = async (res,req) =>{
@@ -135,14 +136,14 @@ const GetSimpleImage= async (obj)=>{
 
 
             if (val.featured) {
-                featurenimage = await CheckmediaImage(val.images);
+                featurenimage = val.images;
             }
 
         });
 
     const rest=await Promise.all(requests);
     if (featurenimage == '' && obj.length > 0) {
-            featurenimage = await CheckmediaImage(obj[0].images);
+            featurenimage = obj[0].images;
         }
 
         if (featurenimage == '') {

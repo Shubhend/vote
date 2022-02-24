@@ -156,7 +156,7 @@ function CreateCampaign  ({location,history}){
 
 
         campaign['description']= JSON.stringify(campaign.description);
-
+        campaign['keywords']=tags;
         const data= await CreateNewCampaign(campaign);
 
             history1.push("/campaign/images/"+data.id);

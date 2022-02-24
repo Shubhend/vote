@@ -1,6 +1,7 @@
 
 const Express = require('express');
 const async = require('express-async-handler');
+const { updateTraffic } = require('../../controller/CampaignTrafficController.js');
 
 
 const {getCountry,getCategory,getState,getCity} = require('../../controller/PublicController')
@@ -11,6 +12,7 @@ router.get('/getCountry',getCountry);
 router.get('/getCategory',getCategory);
 router.get('/getState',getState);
 router.get('/getCity',getCity);
+router.post('/updateTraffic',updateTraffic);
 
 
 

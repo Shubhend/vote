@@ -8,19 +8,7 @@ const getMedia = asynchandler(
         var  campaigndata = await Modal.campaignmedia.findAll({where:{campaignId:req.query.id,userId:req.user.id}});
 
 
-        const result = await new Promise(async (resolve, reject) => {
-              await campaigndata.map(async (val) => {
-
-
-                let im = await CheckmediaImage(val.images);
-                val.images = im;
-
-            });
-
-            resolve(campaigndata);
-        });
-
-            res.json(result)
+            res.json(campaigndata)
 
 
 

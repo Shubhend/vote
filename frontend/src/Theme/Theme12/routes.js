@@ -9,6 +9,8 @@ import ListCampaign from "./Campaign/listCampaign";
 import CreateCampaign from "./Campaign/CreateCampaign"
 import ImageCampaign from "./Campaign/Images";
 import QrCampaign from "./Campaign/qrcode";
+import Detail from "./Campaign/Detail.js";
+
 
 
 
@@ -106,6 +108,15 @@ const Allroutes =[
         'name': 'Add Campaign Images',
         'path': '/campaign/images/:CampaignId',
         'action': ImageCampaign,
+        'display': false,
+        'showOnLogin': true,
+        'position': 1,
+        'icon': 'feather-user btn-round-md bg-primary-gradiant me-3'
+    },
+    {
+        'name': 'Campaign Details',
+        'path': '/:campId',
+        'action': Detail,
         'display': false,
         'showOnLogin': true,
         'position': 1,

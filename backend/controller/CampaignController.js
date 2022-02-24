@@ -5,6 +5,34 @@ const {encode}= require('html-entities');
 const lzwCompress =require('lzwcompress');
 
 
+
+const getCampaignByUniqueId = asynchandler( async (req,res)=>{
+
+   const id=req.query.id;
+
+   const data = await Modal.campaign.findOne({
+    include:[
+        {model: Modal.category,as: 'categoryData' },
+        {model: Modal.country,as: 'countryData' },
+        {model: Modal.state,as: 'stateData' },
+        {model: Modal.city,as: 'cityData' },
+    ],
+    where:{uniqueId:id} });
+
+if(data){
+    const campaignData = await Modal.campaignmedia.findAll({
+    where:{campaignId:data.id} });
+
+    res.json({'data':data,'media':campaignData});
+
+}
+
+ 
+     
+
+});
+
+
 const newCampaign = asynchandler(
     async (req,res)=>{
 
@@ -113,4 +141,4 @@ const getCampaign = asynchandler(
 )
 
 
-module.exports={newCampaign,getCampaign};
+module.exports={newCampaign,getCampaign,getCampaignByUniqueId};

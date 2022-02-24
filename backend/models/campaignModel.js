@@ -27,6 +27,7 @@ const campaignModel = (sequelize, Sequelize) => {
         description: { type:String },
         address: { type:String }
 
+
     }, {
         tableName: 'campaign'
     })
