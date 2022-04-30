@@ -6,6 +6,8 @@ const async = require('express-async-handler');
 const {newCampaign,getCampaign,getCampaignByUniqueId,SetVote} = require('../../controller/CampaignController')
 
 const {getMedia,setMedia,RemoveMedia,SetFeaturedMedia} = require('../../controller/campaignMedia')
+
+const {GetStatistics} = require('../../controller/StatisticsController.js')
 const {protect} = require("../../middleware/auth");
 const router = Express.Router();
 
@@ -17,6 +19,8 @@ router.route('/setMedia').post(protect,setMedia);
 router.route('/setFeaturedMedia').post(protect,SetFeaturedMedia);
 router.route('/removeMedia').post(protect,RemoveMedia);
 router.route('/vote').post(protect,SetVote);
+router.route('/statistics').post(protect,GetStatistics);
+
 
 
 // public

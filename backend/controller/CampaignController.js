@@ -3,7 +3,7 @@ const Modal = require('../config/config');
 const {CheckmediaImage, GetSimpleImage} = require("../Service/AssetsService");
 const {encode}= require('html-entities');
 const lzwCompress =require('lzwcompress');
-const {getIpDetails} = require('../utils/helpers')
+const {getIpDetails,getAddressFromLocationId} = require('../utils/helpers')
 const ip = require('ip');
 
 
@@ -57,6 +57,20 @@ const SetVote = asynchandler( async (req,res)=>{
     }
 
 
+    if(req.body.exactLocation){
+
+        var addressdetails= await getAddressFromLocationId(req.body.longitude,req.body.latitude);
+
+        if(addressdetails){
+            req.body.country=addressdetails.data.country;
+            req.body.state=addressdetails.data.state;
+            req.body.city=addressdetails.data.city;
+            req.body.locationResponse=addressdetails.obj;
+        }
+
+    }
+
+
 
      await Modal.campaignVote.create(req.body);
 
@@ -99,6 +113,8 @@ const newCampaign = asynchandler(
 
         req.body.keywords=JSON.stringify(req.body.keywords);
         req.body.description=encode(req.body.description);
+        req.body.status=1;
+        req.body.type=1;
 
         try{
 

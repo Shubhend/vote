@@ -22,7 +22,7 @@ const campaignTrafficModel = (sequelize, Sequelize) => {
 
 
     },{
-        tableName: 'campaignTraffic'
+        tableName: 'campaigntraffic'
     })
 
     return country;

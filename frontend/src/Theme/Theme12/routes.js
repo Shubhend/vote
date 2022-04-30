@@ -10,12 +10,22 @@ import CreateCampaign from "./Campaign/CreateCampaign"
 import ImageCampaign from "./Campaign/Images";
 import QrCampaign from "./Campaign/qrcode";
 import Detail from "./Campaign/Detail.js";
+import Statistics from "./Campaign/statistics";
 
 
 
 
 
 const Allroutes =[
+    {
+        'name': 'Statistics',
+        'path': '/campaign/statics/:CampaignId',
+        'action': Statistics,
+        'display': false,
+        'position': 1,
+        'icon': 'feather-tv btn-round-md bg-blue-gradiant me-3'
+    },
+
     {
         'name': 'Feed',
         'path': '/feed',

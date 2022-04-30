@@ -4,6 +4,16 @@ import Notify from "../Helper/notify";
 
 
 
+
+export const RawTraffic = async (value) =>{
+
+    const config = HEADERCONFIG;
+    const {data} = await axiosHelper.post('/api/public/rawTraffic?campId='+value.campId,value,config)
+    return data;
+
+
+}
+
 export const UpdateTraffic=  async (value) =>{
 
     const config = HEADERCONFIG;

@@ -1,0 +1,5 @@
+CREATE TABLE `vote`.`rawTraffic` ( `id` INT NOT NULL AUTO_INCREMENT ,  `ip` VARCHAR(222) NULL ,  `campaignId` VARCHAR(222) NULL ,  `country` VARCHAR(222) NULL ,  `state` VARCHAR(222) NULL ,  `city` VARCHAR(222) NULL ,  `createdAt` DATETIME NULL ,  `updatedAt` DATETIME NULL ,  `locationResponse` TEXT NULL ,  `device` VARCHAR(222) NULL ,    PRIMARY KEY  (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `rawTraffic`  ADD `longitude` VARCHAR(222) NULL  AFTER `city`,  ADD `latitude` VARCHAR(222) NULL  AFTER `longitude`;
+
+ALTER TABLE `rawTraffic`  ADD `count` VARCHAR(222) NULL DEFAULT '0'  AFTER `device`;

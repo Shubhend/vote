@@ -28,7 +28,7 @@ const stateModel = (sequelize, Sequelize) => {
 
 
     }, {
-        tableName: 'votedUser'
+        tableName: 'voteduser'
     })
 
     return country;

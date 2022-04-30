@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
 import DateObject from "react-date-object";
 import {GetCampaign} from "../../../Action/CampaignController";
 import {ModalBlock} from "../../../Component/Modal/modal";
-
+import {SITEURL} from "../Globals/variables";
 
 
 function ListCampaign  ({location,history}){
@@ -101,6 +101,10 @@ function ListCampaign  ({location,history}){
                                                                      <Link to={"/campaign/qr/"+val.id} className="btn-round-sm bg-primary-gradiant text-white font-sm " title="qr code" style={{marginLeft:'5px'}}><li className="fa-solid fa-qrcode" ></li></Link>
 
                                                                         <Link to={"/campaign/edit/"+val.id} className="btn-round-sm bg-primary-gradiant text-white font-sm " title="qr code" style={{marginLeft:'5px'}}><li className="fa-solid fa-edit" ></li></Link>
+
+                                                                     <a href={ SITEURL+'/'+val.uniqueId} target="_blank" className="btn-round-sm bg-primary-gradiant text-white font-sm " title="qr code" style={{marginLeft:'5px'}}><li className="fa-solid fa-link" ></li></a>
+
+                                                                     <Link to={"/campaign/statics/"+val.id} className="btn-round-sm bg-primary-gradiant text-white font-sm " title="Graphical Data" style={{marginLeft:'5px'}}><li className="fa-solid fa-bar-chart" ></li></Link>
 
                                                                  </span>
                                                              </span>
