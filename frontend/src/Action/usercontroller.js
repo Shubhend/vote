@@ -8,18 +8,14 @@ import {RoutesContext} from "../Context/context";
 
 const config = '';
 
-export  const logout =() => async (dispatch) =>{
+export  const logout = async () =>{
 
     const userLoggedIn={'status':true,'data':''};
-    dispatch({
-        type:USERLOGOUT,
-        payload: null
-    })
     reactLocalStorage.set('userInfo','');
 
 };
 
-export  const register =(values) => async (dispatch) =>{
+export  const register = async (values) => {
 
     const config = HEADERCONFIG;
     const {data} = await axiosHelper.post('/api/user/register',values,config)
@@ -31,6 +27,7 @@ export  const register =(values) => async (dispatch) =>{
     }
 
 
+    return data;
 }
 
 
@@ -52,7 +49,7 @@ export const userProfile=(values) =>async dispatch =>{
 
 }
 
-export  const login =(values) => async dispatch =>{
+export  const login = async (values) =>{
 
 
     const config = HEADERCONFIG;
@@ -62,10 +59,7 @@ export  const login =(values) => async dispatch =>{
     }else{
 
         const userLoggedIn={'status':true,'data':JSON.stringify(data)};
-        dispatch({
-            type:USERLOGIN,
-            payload: data
-        })
+
         reactLocalStorage.set('userInfo',JSON.stringify(data));
 
         Notify('success',data.msg);
