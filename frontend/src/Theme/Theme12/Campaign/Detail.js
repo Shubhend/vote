@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import {GetCampaignByUniqueId, RawTraffic, UpdateTraffic} from "../../../Action/CampaignController.js";
@@ -8,12 +8,38 @@ import {useSelector} from "react-redux";
 import {vote} from "../../../Action/CampaignController";
 import DOMPurify from 'dompurify';
 import {decode} from 'html-entities';
+import Box from "@material-ui/core/Box";
+import {makeStyles} from "@material-ui/core/styles";
 
 
+
+
+const useStyles = makeStyles((theme) => ({
+    appBar: {
+        backgroundColor: "#fff"
+    },
+    hero: {
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')`,
+        height: "300px",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "#fff",
+        fontSize: "4rem",
+        [theme.breakpoints.down("sm")]: {
+            height: 300,
+            fontSize: "3em"
+        }
+    },
+
+}));
 
 
 function Detail({history}){
-
+    const classes = useStyles();
      const defaultdata={
          categoryData:{name:'Default'},
          keywords:null,
@@ -96,8 +122,16 @@ return (
     
 <Fragment>
 
+
+
+    <Box className={classes.hero}>
+        <Box>React Blog</Box>
+    </Box>
+
 <div className="main-content right-chat-active">
-            
+
+
+
             <div className="middle-sidebar-bottom">
                 <div className="middle-sidebar-left">
                     <div className="row">

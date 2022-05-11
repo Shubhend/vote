@@ -5,7 +5,8 @@ export default function StaticFooter(){
 
 
     return (
-        <footer style={{background:'black',padding:'20px'}}>
+
+        <footer style={{background:'black',padding:'20px',marginTop:'15px'}}>
             <div className="container">
                 <div className="row">
                     <div className="col-md-4 footer-column">
