@@ -27,6 +27,7 @@ import NotificationContainer from "react-notifications/lib/NotificationContainer
 import {useSelector} from "react-redux";
 import Detail from "./Campaign/Detail.js";
 import Statistics from "./Campaign/statistics";
+import StaticFooter from "./layout/staticFooter";
 
 const AppendedMyComponent= componentWillAppendToBody(Include);
 
@@ -58,11 +59,10 @@ function Home(){
                 <RoutesContext.Provider  value={{contextdata,setContextdata}}>
 
                     <Header/>
-                    <Navscrollbar/>
+
                     <Switch>
 
                         {
-
 
                             Allroutes.map((key,val)=>{
 
@@ -71,7 +71,6 @@ function Home(){
 
                                 }else{
                                     return( <Route path={key.path}   component={key.action}   exact /> )
-
                                 }
 
                             })
@@ -82,9 +81,8 @@ function Home(){
                     </Switch>
 
                     <Footer/>
+                    <StaticFooter/>
                 </RoutesContext.Provider>
-
-
 
 
 
@@ -93,6 +91,8 @@ function Home(){
             <AppendedMyComponent>
                 The content for my appended component
             </AppendedMyComponent>
+
+
         </div>
 
 

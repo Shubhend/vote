@@ -38,7 +38,7 @@ function Header(){
 
          <div className="nav-header bg-white shadow-xs border-0">
             <div className="nav-top">
-               <a href="index.html"><i className="feather-zap text-success display1-size me-2 ms-0"></i><span
+               <a href=""><i className="feather-zap text-success display1-size me-2 ms-0"></i><span
                    className="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span>
                </a>
                <Link to="/" className="mob-menu ms-auto me-2 chat-active-btn"><i
@@ -50,15 +50,15 @@ function Header(){
             </div>
 
 
-            <Notification/>
-
-
+           <div className="ms-auto" >
            <ThemeShinMode/>
 
 
-            <Link to="/user/profile" className="p-0 ms-3 menu-icon"><img src={ GLOBALASSETPATH+'images/profile-4.png'  } alt="user"
-                                                                                className="w40 mt--1"/></Link>
 
+           </div>
+
+             <Link to="/user/profile" className="p-0 ms-3 menu-icon"><img src={ GLOBALASSETPATH+'images/profile-4.png'  } alt="user"
+                                                                          className="w40 mt--1"/></Link>
          </div>
 
       </div>

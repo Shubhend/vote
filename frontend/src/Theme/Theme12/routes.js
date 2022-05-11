@@ -52,7 +52,8 @@ const Allroutes =[
     },
     {
         'name': 'login',
-        'path': '/user/login',
+        'path': '/admin/login',
+        'link':true,
         'action': LoginPage,
         'display': true,
         'hideOnLogin': true,
