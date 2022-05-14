@@ -60,9 +60,9 @@ export const CreateNewCampaign = async (values) =>{
 
 export const GetCampaign = async () =>{
 
+
     const config = HEADERCONFIG;
     const {data} = await axiosHelper.get('/api/campaign/getCampaign',config)
-
 
     return data;
 

@@ -17,24 +17,18 @@ import * as serviceWorker from "./Admin/serviceWorker";
 
 ReactDOM.render(
     <Provider store={store}>
+
     {
         window.location.href.includes('admin') ?
 
-            (   <LayoutProvider>
-                <UserProvider>
-                    <ThemeProvider theme={Themes.default}>
-                        <CssBaseline/>
-                        <Admin/>
-                    </ThemeProvider>
-                </UserProvider>
-            </LayoutProvider>
+            (
 
+               <AdminIndex/>
 
             )
 
             : (<Home/>)
     }
-
 
   </Provider>,
   document.getElementById('root')
@@ -43,5 +37,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-serviceWorker.register();
 reportWebVitals();

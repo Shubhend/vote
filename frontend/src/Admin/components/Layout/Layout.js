@@ -36,6 +36,9 @@ import List from "../../pages/Campaign/list";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 import {useUserState} from "../../context/UserContext";
+import {QrCode} from "../../pages/Campaign/qrcode";
+import Login from "../../pages/login";
+import Media from "../../pages/Campaign/Media";
 
 function Layout(props) {
   var classes = useStyles();
@@ -49,8 +52,10 @@ function Layout(props) {
     <div className={classes.root}>
 
 
+
+
       {
-        isAuthenticated==false ? <Redirect to="login" /> : null
+        isAuthenticated==false ? ( <Redirect to="/admin/login" /> ): null
       }
 
         <>
@@ -64,19 +69,22 @@ function Layout(props) {
             <div className={classes.fakeToolbar} />
             <Switch>
 
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/typography" component={Typography} />
-              <Route path="/tables" component={Tables} />
-              <Route path="/notifications" component={Notifications} />
-              <Route path="/campaign" component={List} />
+              <Route exact path="/admin/" component={Dashboard} />
+              <Route exact path="/admin/dashboard" component={Dashboard} />
+              <Route  exact path="/admin/campaign/qr/:CampaignId" component={QrCode} />
+              <Route  exact path="/admin/campaign/media/:CampaignId" component={Media} />
+              <Route exact  path="/typography" component={Typography} />
+              <Route exact path="/tables" component={Tables} />
+              <Route exact path="/notifications" component={Notifications} />
+              <Route exact path="/admin/campaign" component={List} />
               <Route
                 exact
                 path="/app/ui"
                 render={() => <Redirect to="/ui/icons" />}
               />
-              <Route path="/ui/maps" component={Maps} />
-              <Route path="/ui/icons" component={Icons} />
-              <Route path="/ui/charts" component={Charts} />
+              <Route exact path="/ui/maps" component={Maps} />
+              <Route exact path="/ui/icons" component={Icons} />
+              <Route exact path="/ui/charts" component={Charts} />
             </Switch>
             <Box
               mt={5}
