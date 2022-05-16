@@ -39,6 +39,10 @@ import {useUserState} from "../../context/UserContext";
 import {QrCode} from "../../pages/Campaign/qrcode";
 import Login from "../../pages/login";
 import Media from "../../pages/Campaign/Media";
+import CampaignPage from "../../pages/Campaign/create";
+import Profile from "../../pages/User/profile";
+import NotificationContainer from "react-notifications/lib/NotificationContainer";
+import VotedUser from "../../pages/Campaign/VotedUser";
 
 function Layout(props) {
   var classes = useStyles();
@@ -59,6 +63,7 @@ function Layout(props) {
       }
 
         <>
+          <NotificationContainer/>
           <Header history={props.history} />
           <Sidebar />
           <div
@@ -69,12 +74,18 @@ function Layout(props) {
             <div className={classes.fakeToolbar} />
             <Switch>
 
+
+              <Route exact path="/admin/VotedUser" component={VotedUser} />
+              <Route exact path="/admin/VotedUser/:campId" component={VotedUser} />
+              <Route exact path="/admin/profile" component={Profile} />
+              <Route  exact path="/admin/campaign/camp" component={CampaignPage} />
+              <Route  exact path="/admin/campaign/camp/:campId" component={CampaignPage} />
               <Route exact path="/admin/" component={Dashboard} />
               <Route exact path="/admin/dashboard" component={Dashboard} />
               <Route  exact path="/admin/campaign/qr/:CampaignId" component={QrCode} />
               <Route  exact path="/admin/campaign/media/:CampaignId" component={Media} />
               <Route exact  path="/typography" component={Typography} />
-              <Route exact path="/tables" component={Tables} />
+              <Route exact path="/admin/tables" component={Tables} />
               <Route exact path="/notifications" component={Notifications} />
               <Route exact path="/admin/campaign" component={List} />
               <Route

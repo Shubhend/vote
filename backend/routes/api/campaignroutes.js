@@ -3,7 +3,7 @@ const Express = require('express');
 const async = require('express-async-handler');
 
 
-const {newCampaign,getCampaign,getCampaignByUniqueId,SetVote} = require('../../controller/CampaignController')
+const {newCampaign,getCampaign,getCampaignByUniqueId,SetVote,GetVotedUser} = require('../../controller/CampaignController')
 
 const {getMedia,setMedia,RemoveMedia,SetFeaturedMedia} = require('../../controller/campaignMedia')
 
@@ -20,6 +20,8 @@ router.route('/setFeaturedMedia').post(protect,SetFeaturedMedia);
 router.route('/removeMedia').post(protect,RemoveMedia);
 router.route('/vote').post(protect,SetVote);
 router.route('/statistics').post(protect,GetStatistics);
+router.route('/statistics').post(protect,GetStatistics);
+router.route('/votedUser').post(protect,GetVotedUser);
 
 
 

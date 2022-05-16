@@ -28,6 +28,7 @@ import {Edit, Image, Scanner} from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 import {SITEURL} from "../../Theme/Theme12/Globals/variables";
+import GroupIcon from '@material-ui/icons/Group'
 
 
 
@@ -48,7 +49,7 @@ export default  function CampaignBox(props){
     return (
         <>
             <Grid item xs>
-                    <Card sx={{ maxWidth: 400 }} style={{ maxWidth:'400px',width:'auto' }}>
+                    <Card>
                         <CardHeader
                             avatar={
                                 <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -86,9 +87,18 @@ export default  function CampaignBox(props){
                                 <Image/>
                             </IconButton>
                             </Link>
+
+                            <Link to={'/admin/campaign/camp/'+data.id}>
                             <IconButton aria-label="share">
                                 <Edit/>
                             </IconButton>
+                            </Link>
+
+                            <Link to={'/admin/VotedUser/'+data.id}>
+                                <IconButton aria-label="share">
+                                    <GroupIcon/>
+                                </IconButton>
+                            </Link>
 
                             <a href={ SITEURL+'/'+data.uniqueId} target="_blank" >
 

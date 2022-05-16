@@ -32,13 +32,15 @@ import {
 const structure = [
   { id: 0, label: "Dashboard", link: "/admin/dashboard", icon: <HomeIcon /> },
   { id: 0, label: "Campaign", link: "/admin/campaign", icon: <HomeIcon /> },
+  { id: 0, label: "New Campaign", link: "/admin/campaign/camp", icon: <HomeIcon /> },
+  { id: 0, label: "User List", link: "/admin/VotedUser", icon: <HomeIcon /> },
   {
     id: 1,
     label: "Typography",
     link: "/typography",
     icon: <TypographyIcon />,
   },
-  { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
+  { id: 2, label: "Tables", link: "/admin/tables", icon: <TableIcon /> },
   {
     id: 3,
     label: "Notifications",

@@ -31,7 +31,7 @@ export  const register = async (values) => {
 }
 
 
-export const UploadProfile=(value)=>async dispatch =>{
+export const UploadProfile= async (value) =>{
     const formData = new FormData()
     const config = HEADERCONFIG;
     formData.append('profileImg', value)
@@ -40,7 +40,7 @@ export const UploadProfile=(value)=>async dispatch =>{
 
 }
 
-export const userProfile=(values) =>async dispatch =>{
+export const userProfile=async (values)  =>{
 
 
     const config = HEADERCONFIG;

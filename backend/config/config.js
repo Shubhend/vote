@@ -49,6 +49,8 @@ connectDb.campaign.belongsTo( connectDb.country,{through:'iso2', foreignKey:'cou
 connectDb.campaign.belongsTo( connectDb.city,{ foreignKey:'city',as:'cityData',foreignKeyConstraint:true});
 connectDb.campaign.belongsTo( connectDb.state,{ foreignKey:'state',as:'stateData',foreignKeyConstraint:true});
 connectDb.campaign.hasMany( connectDb.campaignmedia,{ foreignKey:'campaignId',as:'mediaData',foreignKeyConstraint:true});
+connectDb.campaignVote.belongsTo( connectDb.campaign,{ foreignKey:'campaignId',as:'campaignData',foreignKeyConstraint:true});
+connectDb.campaignVote.belongsTo( connectDb.user,{ foreignKey:'userId',as:'userData',foreignKeyConstraint:true});
 
 
 

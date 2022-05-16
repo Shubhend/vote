@@ -46,9 +46,9 @@ import {withRouter} from "react-router-dom";
 
         <Grid container spacing={4}>
             <CustomAppBar title="Campaign List"/>
-            <Grid lg={12} md={4} sm={6} xs={12}>
+            <Grid lg={12}  xs={12}>
 
-                <Grid container spacing={4}  direction="row"
+                <Grid container spacing={2}  direction="row"
                       justifyContent="center"
                       alignItems="center">
 

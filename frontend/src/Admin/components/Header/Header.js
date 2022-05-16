@@ -6,9 +6,9 @@ import {
   InputBase,
   Menu,
   MenuItem,
-  Fab,
-  Link
+  Fab
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
@@ -268,7 +268,9 @@ export default function Header(props) {
               classes.headerMenuItem,
             )}
           >
+            <Link to={'/admin/profile'}>
             <AccountIcon className={classes.profileMenuIcon} /> Profile
+            </Link>
           </MenuItem>
           <MenuItem
             className={classNames(

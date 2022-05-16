@@ -39,7 +39,7 @@ const CheckImage  = async (image) =>{
         image="/assets/theme1/images/profile-4.png";
     }
 
-    return image;
+    return '/user/'+image;
 
 }
 

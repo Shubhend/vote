@@ -4,6 +4,15 @@ import Notify from "../Helper/notify";
 
 
 
+export const getVotedUser = async (value) =>{
+
+    const config = HEADERCONFIG;
+    const {data} = await axiosHelper.post('/api/campaign/votedUser',value,config)
+
+    return data;
+
+}
+
 
 export const RawTraffic = async (value) =>{
 
@@ -57,6 +66,8 @@ export const CreateNewCampaign = async (values) =>{
     return data;
 
 }
+
+
 
 export const GetCampaign = async () =>{
 

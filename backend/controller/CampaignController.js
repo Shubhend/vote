@@ -8,6 +8,58 @@ const ip = require('ip');
 
 
 
+
+const GetVotedUser = asynchandler( async (req,res)=>{
+
+
+    const query=req.body;
+
+
+    const data = await   Modal.campaignVote.findAll({
+        include:[
+            {model: Modal.campaign,as: 'campaignData' },
+            {model: Modal.user,as: 'userData' },
+        ],
+        where:{...query}
+
+    });
+
+    const column=['Name','Email','Phone_No','Campaign','country','city','state','date'];
+
+
+     const filterData =data.map((val)=>{
+
+         let d={};
+         d['Name']=val.userData.name;
+         d['Email']=val.userData.email;
+         d['Phone_No']=val.userData.phone;
+         d['Campaign']=val.campaignData.name;
+         d['country']=val.country;
+         d['city']=val.city;
+         d['state']=val.state;
+         d['date']=val.createdAt;
+
+
+
+         return d;
+
+
+
+       })
+
+
+
+        res.json({'data':filterData,'column':column,'query':query});
+
+
+
+
+
+
+
+})
+
+
 const SetVote = asynchandler( async (req,res)=>{
 
 
@@ -211,4 +263,4 @@ const getCampaign = asynchandler(
 )
 
 
-module.exports={newCampaign,getCampaign,getCampaignByUniqueId,SetVote};
+module.exports={newCampaign,getCampaign,getCampaignByUniqueId,SetVote,GetVotedUser};
