@@ -50,7 +50,9 @@ function Layout(props) {
   // global
   var layoutState = useLayoutState();
 
-  var { isAuthenticated } = useUserState();
+  var { isAuthenticated,userInfo } = useUserState();
+
+  props={...props,user:userInfo};
 
   return (
     <div className={classes.root}>
@@ -76,7 +78,7 @@ function Layout(props) {
 
 
               <Route exact path="/admin/VotedUser" component={VotedUser} />
-              <Route exact path="/admin/VotedUser/:campId" component={VotedUser} />
+              <Route exact path="/admin/CampaignVotedUser/:campId" component={VotedUser} />
               <Route exact path="/admin/profile" component={Profile} />
               <Route  exact path="/admin/campaign/camp" component={CampaignPage} />
               <Route  exact path="/admin/campaign/camp/:campId" component={CampaignPage} />

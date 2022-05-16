@@ -94,7 +94,7 @@ export default  function CampaignBox(props){
                             </IconButton>
                             </Link>
 
-                            <Link to={'/admin/VotedUser/'+data.id}>
+                            <Link to={'/admin/CampaignVotedUser/'+data.id}>
                                 <IconButton aria-label="share">
                                     <GroupIcon/>
                                 </IconButton>

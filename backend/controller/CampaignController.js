@@ -1,6 +1,7 @@
 const asynchandler = require("express-async-handler");
 const Modal = require('../config/config');
 const {CheckmediaImage, GetSimpleImage} = require("../Service/AssetsService");
+const campaignService = require('../Service/CampaignService');
 const {encode}= require('html-entities');
 const lzwCompress =require('lzwcompress');
 const {getIpDetails,getAddressFromLocationId} = require('../utils/helpers')
@@ -20,7 +21,7 @@ const GetVotedUser = asynchandler( async (req,res)=>{
             {model: Modal.campaign,as: 'campaignData' },
             {model: Modal.user,as: 'userData' },
         ],
-        where:{...query}
+        ...query
 
     });
 
