@@ -43,6 +43,7 @@ import CampaignPage from "../../pages/Campaign/create";
 import Profile from "../../pages/User/profile";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import VotedUser from "../../pages/Campaign/VotedUser";
+import Statics from "../../pages/Campaign/Statics";
 
 function Layout(props) {
   var classes = useStyles();
@@ -82,7 +83,7 @@ function Layout(props) {
               <Route exact path="/admin/profile" component={Profile} />
               <Route  exact path="/admin/campaign/camp" component={CampaignPage} />
               <Route  exact path="/admin/campaign/camp/:campId" component={CampaignPage} />
-              <Route exact path="/admin/" component={Dashboard} />
+              <Route exact path="/admin" component={Dashboard} />
               <Route exact path="/admin/dashboard" component={Dashboard} />
               <Route  exact path="/admin/campaign/qr/:CampaignId" component={QrCode} />
               <Route  exact path="/admin/campaign/media/:CampaignId" component={Media} />
@@ -90,6 +91,7 @@ function Layout(props) {
               <Route exact path="/admin/tables" component={Tables} />
               <Route exact path="/notifications" component={Notifications} />
               <Route exact path="/admin/campaign" component={List} />
+              <Route exact path="/admin/statics/:campId" component={Dashboard} />
               <Route
                 exact
                 path="/app/ui"
@@ -97,7 +99,7 @@ function Layout(props) {
               />
               <Route exact path="/ui/maps" component={Maps} />
               <Route exact path="/ui/icons" component={Icons} />
-              <Route exact path="/ui/charts" component={Charts} />
+              <Route exact path="/admin/ui/charts" component={Charts} />
             </Switch>
             <Box
               mt={5}

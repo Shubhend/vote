@@ -7,7 +7,7 @@ const {newCampaign,getCampaign,getCampaignByUniqueId,SetVote,GetVotedUser} = req
 
 const {getMedia,setMedia,RemoveMedia,SetFeaturedMedia} = require('../../controller/campaignMedia')
 
-const {GetStatistics} = require('../../controller/StatisticsController.js')
+const {GetStatistics,getVoteStatics} = require('../../controller/StatisticsController.js')
 const {protect} = require("../../middleware/auth");
 const router = Express.Router();
 
@@ -21,6 +21,7 @@ router.route('/removeMedia').post(protect,RemoveMedia);
 router.route('/vote').post(protect,SetVote);
 router.route('/statistics').post(protect,GetStatistics);
 router.route('/statistics').post(protect,GetStatistics);
+router.route('/getVoteRecord').post(protect,getVoteStatics);
 router.route('/votedUser').post(protect,GetVotedUser);
 
 

@@ -9,6 +9,14 @@ export  const GetCampaignStaticsData = async (value) =>{
     const config = HEADERCONFIG;
     const data= await axiosHelper.post('/api/campaign/statistics', value,config);
 
-    return data;
+    return data.data;
 }
 
+
+export const GetRecentVoteRecord = async (value)=>{
+
+    const config = HEADERCONFIG;
+    const data= await axiosHelper.post('/api/campaign/getVoteRecord', value,config);
+
+    return data.data;
+}

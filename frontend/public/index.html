@@ -22,7 +22,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="%REACT_APP_ASSETS_PUBLIC_URL%/images/favicon.png">
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="%REACT_APP_ASSETS_PUBLIC_URL%/css/style.css">
-
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -40,6 +40,36 @@
   <title>React App</title>
 
   <style>
+
+
+    .mapboxgl-canvas {
+
+      height:500px !important;
+
+    }
+
+
+
+    #map {
+      width: 100vw;
+      height: 100%;
+    }
+    .control-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      max-width: 320px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      padding: 12px 24px;
+      margin: 20px;
+      font-size: 13px;
+      line-height: 2;
+      color: #6b6b76;
+      text-transform: uppercase;
+      outline: none;
+    }
+
 
     .dropzone{
       width:100%;

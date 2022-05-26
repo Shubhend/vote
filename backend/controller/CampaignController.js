@@ -232,7 +232,6 @@ const getCampaign = asynchandler(
                 {model:Modal.campaignmedia,as:'mediaData'}
             ],
 
-
             where:whereCon});
         if(data){
 

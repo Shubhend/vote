@@ -108,9 +108,11 @@ export default  function CampaignBox(props){
 
                             </a>
 
+                            <Link to={'/admin/statics/'+data.id}>
                             <IconButton aria-label="share">
                                 <li className="fa-solid fa-bar-chart" ></li>
                             </IconButton>
+                            </Link>
 
                         </CardActions>
                     </Card>
