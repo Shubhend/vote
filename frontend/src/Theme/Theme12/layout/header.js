@@ -56,7 +56,7 @@ function Header(){
 
            </div>
 
-             <Link to="/user/admin" target="_blank" className="p-0 ms-3 menu-icon"><img src={ GLOBALASSETPATH+'images/profile-4.png'  } alt="user"
+             <Link to="/admin/login" target="_blank" className="p-0 ms-3 menu-icon"><img src={ GLOBALASSETPATH+'images/profile-4.png'  } alt="user"
                                                                           className="w40 mt--1"/></Link>
          </div>
 

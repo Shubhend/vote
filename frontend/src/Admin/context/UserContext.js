@@ -84,7 +84,7 @@ async function loginUser(dispatch, email, password, history, setIsLoading, setEr
       setIsLoading(false)
       dispatch({ type: 'LOGIN_SUCCESS' })
 
-      history.push('/dashboard')
+      history.push('/admin/dashboard')
     }, 2000);
   }
 
@@ -94,5 +94,5 @@ async function signOut(dispatch, history) {
   localStorage.removeItem("id_token");
  await logout();
   dispatch({ type: "SIGN_OUT_SUCCESS" });
-  history.push("/login");
+  history.push("/admin/login");
 }

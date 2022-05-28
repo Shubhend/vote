@@ -3,3 +3,8 @@ CREATE TABLE `vote`.`rawTraffic` ( `id` INT NOT NULL AUTO_INCREMENT ,  `ip` VARC
 ALTER TABLE `rawTraffic`  ADD `longitude` VARCHAR(222) NULL  AFTER `city`,  ADD `latitude` VARCHAR(222) NULL  AFTER `longitude`;
 
 ALTER TABLE `rawTraffic`  ADD `count` VARCHAR(222) NULL DEFAULT '0'  AFTER `device`;
+
+CREATE TABLE `vote`.`support` ( `id` INT NOT NULL AUTO_INCREMENT ,  `name` VARCHAR(222) NULL ,  `email` VARCHAR(222) NULL ,  `description` TEXT NULL ,  `createdAt` DATETIME NOT NULL ,  `updatedAt` DATETIME NOT NULL ,    PRIMARY KEY  (`id`)) ENGINE = InnoDB;
+
+
+

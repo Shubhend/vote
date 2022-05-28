@@ -22,9 +22,11 @@ import classNames from "classnames";
 
 // styles
 import useStyles from "./styles";
+import { Button } from "@material-ui/core";
 
+import HelpSupport from "../../Global/HelpSupport";
 // components
-import { Badge, Typography, Button } from "../Wrappers";
+import { Badge, Typography } from "../Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
 
@@ -35,6 +37,7 @@ import {
   toggleSidebar,
 } from "../../context/LayoutContext";
 import { useUserDispatch, signOut ,useUserState} from "../../context/UserContext";
+import NotificationContainer from "react-notifications/lib/NotificationContainer";
 
 const messages = [
   {
@@ -67,6 +70,7 @@ export default function Header(props) {
 
   // local
   var [mailMenu, setMailMenu] = useState(null);
+  var [help, openHelp] = useState(false);
   var [isMailsUnread, setIsMailsUnread] = useState(true);
   var [notificationsMenu, setNotificationsMenu] = useState(null);
   var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
@@ -77,7 +81,16 @@ export default function Header(props) {
 
 
   return (
+
+
+
     <AppBar position="fixed" className={classes.appBar}>
+
+      <NotificationContainer/>
+
+     <HelpSupport setOpen={openHelp} open={help} />
+
+
       <Toolbar className={classes.toolbar}>
         <IconButton
           color="inherit"
@@ -108,20 +121,26 @@ export default function Header(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React Material Admin
+        On Live Voting
         </Typography>
+        <Button color="primary" variant="raised" style={{color:'white',float:'right'}} onClick={()=> { openHelp(true) } }> Help/Issue ?? </Button>
         <div className={classes.grow} />
         <div
           className={classNames(classes.search, {
             [classes.searchFocused]: isSearchOpen,
           })}
         >
+
+
+
           <div
             className={classNames(classes.searchIcon, {
               [classes.searchIconOpened]: isSearchOpen,
             })}
             onClick={() => setSearchOpen(!isSearchOpen)}
           >
+
+
             <SearchIcon classes={{ root: classes.headerIcon }} />
           </div>
           <InputBase
@@ -149,23 +168,7 @@ export default function Header(props) {
             <NotificationsIcon classes={{ root: classes.headerIcon }} />
           </Badge>
         </IconButton>
-        <IconButton
-          color="inherit"
-          aria-haspopup="true"
-          aria-controls="mail-menu"
-          onClick={e => {
-            setMailMenu(e.currentTarget);
-            setIsMailsUnread(false);
-          }}
-          className={classes.headerMenuButton}
-        >
-          <Badge
-            badgeContent={isMailsUnread ? messages.length : null}
-            color="secondary"
-          >
-            <MailIcon classes={{ root: classes.headerIcon }} />
-          </Badge>
-        </IconButton>
+
         <IconButton
           aria-haspopup="true"
           color="inherit"
@@ -185,41 +188,7 @@ export default function Header(props) {
           classes={{ paper: classes.profileMenu }}
           disableAutoFocusItem
         >
-          <div className={classes.profileMenuUser}>
-            <Typography variant="h4" weight="medium">
-              New Messages
-            </Typography>
-            <Typography
-              className={classes.profileMenuLink}
-              component="a"
-              color="secondary"
-            >
-              {messages.length} New Messages
-            </Typography>
-          </div>
-          {messages.map(message => (
-            <MenuItem key={message.id} className={classes.messageNotification}>
-              <div className={classes.messageNotificationSide}>
-                <UserAvatar color={message.variant} name={message.name} />
-                <Typography size="sm" color="text" colorBrightness="secondary">
-                  {message.time}
-                </Typography>
-              </div>
-              <div
-                className={classNames(
-                  classes.messageNotificationSide,
-                  classes.messageNotificationBodySide,
-                )}
-              >
-                <Typography weight="medium" gutterBottom>
-                  {message.name}
-                </Typography>
-                <Typography color="text" colorBrightness="secondary">
-                  {message.message}
-                </Typography>
-              </div>
-            </MenuItem>
-          ))}
+
           <Fab
             variant="extended"
             color="primary"
@@ -272,22 +241,7 @@ export default function Header(props) {
             <AccountIcon className={classes.profileMenuIcon} /> Profile
             </Link>
           </MenuItem>
-          <MenuItem
-            className={classNames(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
-            )}
-          >
-            <AccountIcon className={classes.profileMenuIcon} /> Tasks
-          </MenuItem>
-          <MenuItem
-            className={classNames(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
-            )}
-          >
-            <AccountIcon className={classes.profileMenuIcon} /> Messages
-          </MenuItem>
+
           <div className={classes.profileMenuUser}>
             <Typography
               className={classes.profileMenuLink}

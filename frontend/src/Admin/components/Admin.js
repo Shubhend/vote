@@ -7,26 +7,34 @@ import Layout from "./Layout";
 // pages
 import Error from "../pages/error";
 import Login from "../pages/login";
+import {useUserState} from "../context/UserContext";
 
 // context
 
 
 
 
-export default function Admin() {
+export default function Admin({history}) {
   // global
+
+
 
 
   return (
 
+      <>
+
+
+
           <BrowserRouter>
+
                 <Switch>
                     <Route exact path="/admin/login" component={Login} />
                     <Route component={Layout} />
                 </Switch>
           </BrowserRouter>
 
-
+</>
   );
 
   // #######################################################################

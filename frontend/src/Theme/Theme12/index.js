@@ -10,6 +10,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 //
+import { SlideTestimonial } from 'react-materialui-testimonials-transition'
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -82,10 +83,65 @@ function Indexpage(){
     return(
 
 
-        <div className="App">
+        <div className="">
             <Box className={classes.hero}>
                 <Box>React Blog</Box>
             </Box>
+
+
+            <Container maxWidth="lg" className={classes.blogsContainer}>
+
+                <Typography variant="h4" className={classes.blogTitle}>
+                    Some Features
+                </Typography>
+                <Grid container spacing={12}>
+                    <Card className={classes.card}>
+            <section id="features" className="grey lighten-4">
+                <div className="container">
+
+                    <CardActionArea>
+                        <center>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 24 24" width="100%"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-5h2v5zm4 0h-2v-3h2v3zm0-5h-2v-2h2v2zm4 5h-2V7h2v10z"/></svg>
+                            <Typography gutterBottom variant="h5" component="h2">Pixel-Perfect Design</Typography>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor dolore magna aliqua. Ut enim!</p>
+                        </div>
+                        <div className="col-sm-6">
+                            <i style={{
+                                fontSize:83
+                            }} className="fa-solid fa-eye"></i>
+                            <Typography gutterBottom variant="h5" component="h2">Pixel-Perfect Design</Typography>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor dolore magna aliqua. Ut enim!</p>
+                        </div>
+                        <div className="col-sm-6">
+                            <i style={{
+                                fontSize:83
+                            }} className="fa-solid fa-globe"></i>
+                            <Typography gutterBottom variant="h5" component="h2">Pixel-Perfect Design</Typography>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor dolore magna aliqua. Ut enim!</p>
+                        </div>
+                        <div className="col-sm-6">
+                            <i  style={{
+                                fontSize:83
+                            }} className="fa-solid fa-bullhorn"></i>
+                            <Typography gutterBottom variant="h5" component="h2">Pixel-Perfect Design</Typography>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor dolore magna aliqua. Ut enim!</p>
+                        </div>
+                    </div>
+                        </center>
+                    </CardActionArea>
+                </div>
+            </section>
+
+                    </Card>
+                </Grid>
+            </Container>
+
+
+
+
+
 
 
             <Container maxWidth="lg" className={classes.blogsContainer}>
@@ -240,6 +296,33 @@ function Indexpage(){
                 </Grid>
 
             </Container>
+
+
+            <Container maxWidth="lg" className={classes.blogsContainer}>
+
+                <Typography variant="h4" className={classes.blogTitle}>
+                    Testimonials
+                </Typography>
+
+            <SlideTestimonial
+                image='/images/1.jpg'
+                alt='Arif Shariati'
+                imageRadius='50%'
+                title='Arif Shariati'
+                subtitle='CEO'
+                testimonial={'Awesome React Material UI Testimonial component Package'}
+                backgroundGradient={['#FE6B8B', '#FF8E53']}
+                backgroundColor='#f9f9f9'
+                transition={true}
+                direction='left'
+                speed={1000}
+                shadow={5}
+            />
+
+            </Container>
+
+
+
         </div>
     );
 

@@ -44,6 +44,7 @@ import CustomPie from "../../Global/CustomPie";
 import CustomMap from "../../Global/Map";
 import MUIDataTable from "mui-datatables";
 import {useParams} from "react-router-dom";
+import Filter from "../../Global/Filter";
 
 
 const PieChartData = [
@@ -63,6 +64,8 @@ export default function Dashboard(props) {
   const [implinechart,setImpLinechart]=useState([]);
     const [mapData,setMapData]=useState([]);
     const [pie,setPie]=useState({country:[],state:[],city:[]});
+    const [PageText,setPageText]=useState("Dashboard");
+    const [filter,setFilter]=useState(null);
     const params = useParams();
 
   useEffect(()=>{
@@ -73,104 +76,12 @@ export default function Dashboard(props) {
 
         if (params.campId > 0) {
 
+            setPageText("Campaign Data");
+
             query={...query,campaignId:params.campId}
         }
 
-
-     let data=await GetCampaignStaticsData(query);
-
-     let voteData=await GetRecentVoteRecord(query);
-
-     setRecord(voteData);
-
-     // country Pie
-
-        let countryPieData=[];
-        let CountryPieLabel=[];
-        for(let i=0;i<data.CountryRecord.length;i++){
-            let element=data.CountryRecord[i];
-            countryPieData.push(element.countryCount);
-            CountryPieLabel.push(element.country);
-
-        }
-
-        let statePieData=[];
-        let statePieLabel=[];
-
-        for(let i=0;i<data.StateRecord.length;i++){
-            let element=data.StateRecord[i];
-            statePieData.push(element.stateCount);
-            statePieLabel.push(element.state);
-
-        }
-
-
-        let cityPieData=[];
-        let cityPieLabel=[];
-
-        for(let i=0;i<data.CityRecord.length;i++){
-            let element=data.CityRecord[i];
-            cityPieData.push(element.cityCount);
-            cityPieLabel.push(element.city);
-
-        }
-
-
-
-        pie.country['label']=CountryPieLabel;
-        pie.country['data']=countryPieData;
-        pie.state['label']=statePieLabel;
-        pie.state['data']=statePieData;
-        pie.city['label']=cityPieLabel;
-        pie.city['data']=cityPieData;
-        setPie(pie);
-
-
-        let mapd=[];
-        for(let i=0;i<voteData.GraphData.length;i++){
-            let element=voteData.GraphData[i];
-
-            mapd.push({
-                state:element.state,
-                count:element.stateCount,
-                latitude:element.latitude,
-                longitude:element.longitude,
-                country:element.country,
-                city:element.city
-            });
-        }
-        setMapData(mapd)
-
-
-
-     let lineChart=[];
-     for(let i=0;i<voteData.TotalVoteCount.length;i++){
-       let element=voteData.TotalVoteCount[i];
-       lineChart.push({
-         name:moment(element.createdAt).fromNow(),
-         count:element.count
-       });
-      }
-     setLinechart(lineChart);
-
-        let ImpressionlineChart=[];
-        for(let i=0;i<voteData.TotalImpression.length;i++){
-            let element=voteData.TotalImpression[i];
-            ImpressionlineChart.push({
-                name:moment(element.createdAt).fromNow(),
-                clicks:element.clicks,
-                impression:element.impression
-            });
-        }
-
-        setImpLinechart(ImpressionlineChart);
-
-
-     console.log(lineChart)
-     setData(data);
-
-
-
+        setFilter(query);
 
     }
 
@@ -183,11 +94,130 @@ export default function Dashboard(props) {
   },[]);
 
 
+  useEffect(()=>{
+
+      if(filter)
+      load();
+
+  },[filter]);
+
+  const load= async ()=>{
+
+      let query =filter
+
+      let data=await GetCampaignStaticsData(query);
+
+      let voteData=await GetRecentVoteRecord(query);
+
+      setRecord(voteData);
+
+      // country Pie
+
+      let countryPieData=[];
+      let CountryPieLabel=[];
+      for(let i=0;i<data.CountryRecord.length;i++){
+          let element=data.CountryRecord[i];
+          countryPieData.push(element.countryCount);
+          CountryPieLabel.push(element.country);
+
+      }
+
+      let statePieData=[];
+      let statePieLabel=[];
+
+      for(let i=0;i<data.StateRecord.length;i++){
+          let element=data.StateRecord[i];
+          statePieData.push(element.stateCount);
+          statePieLabel.push(element.state);
+
+      }
+
+
+      let cityPieData=[];
+      let cityPieLabel=[];
+
+      for(let i=0;i<data.CityRecord.length;i++){
+          let element=data.CityRecord[i];
+          cityPieData.push(element.cityCount);
+          cityPieLabel.push(element.city);
+
+      }
+
+
+
+      pie.country['label']=CountryPieLabel;
+      pie.country['data']=countryPieData;
+      pie.state['label']=statePieLabel;
+      pie.state['data']=statePieData;
+      pie.city['label']=cityPieLabel;
+      pie.city['data']=cityPieData;
+      setPie(pie);
+
+
+      let mapd=[];
+      for(let i=0;i<voteData.GraphData.length;i++){
+          let element=voteData.GraphData[i];
+
+          mapd.push({
+              state:element.state,
+              count:element.stateCount,
+              latitude:element.latitude,
+              longitude:element.longitude,
+              country:element.country,
+              city:element.city
+          });
+      }
+      setMapData(mapd)
+
+
+
+      let lineChart=[];
+      for(let i=0;i<voteData.TotalVoteCount.length;i++){
+          let element=voteData.TotalVoteCount[i];
+          lineChart.push({
+              name:moment(element.createdAt).fromNow(),
+              count:element.count
+          });
+      }
+      setLinechart(lineChart);
+
+      let ImpressionlineChart=[];
+      for(let i=0;i<voteData.TotalImpression.length;i++){
+          let element=voteData.TotalImpression[i];
+          ImpressionlineChart.push({
+              name:moment(element.createdAt).fromNow(),
+              clicks:element.clicks,
+              impression:element.impression
+          });
+      }
+
+      setImpLinechart(ImpressionlineChart);
+
+
+      console.log(lineChart)
+      setData(data);
+
+
+  }
+
+
+
+  const dateFilter=async(data)=>{
+
+
+      let query={ ...filter,startDate:moment(data.endDate).format('YYYY-MM-DD hh:mm:ss'),toDate:moment(data.startDate).format('YYYY-MM-DD hh:mm:ss') };
+
+      setFilter(query);
+
+
+  }
 
   return (
     <>
-      <PageTitle title="Dashboard"  />
+      <PageTitle title={PageText}  />
 
+
+        <Filter setFilter={dateFilter}/>
 
       <Grid container spacing={4}>
 
@@ -251,7 +281,7 @@ export default function Dashboard(props) {
               <MUIDataTable
                   title="Recent Vote List"
                   data={ record ? record.RecentVote:[]}
-                  columns={['name','email','country','state','city','createdAt']}
+                  columns={['name','email','phone' ,'country','state','city','createdAt']}
               />
 
 

@@ -12,6 +12,16 @@ export  const GetCountry = async () =>{
 }
 
 
+
+export const Support = async (value) =>{
+
+        const config = HEADERCONFIG;
+        const data= await axiosHelper.post('/api/public/support',value, config);
+        Notify('success',"Thanks, We will connect you soon ");
+        return data;
+
+}
+
 export  const GetCategory = async () =>{
 
         const config = HEADERCONFIG;

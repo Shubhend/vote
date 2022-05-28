@@ -14,19 +14,31 @@ import classnames from "classnames";
 
 // styles
 import useStyles from "./styles";
+import { GoogleLogout,GoogleLogin} from 'react-google-login';
+import {
+  GoogleButton,
+  IAuthorizationOptions,
+  isLoggedIn,
+  createOAuthHeaders,
+  logOutOAuthUser,
+  GoogleAuth,
+} from "react-google-oauth2";
+
 
 // logo
 import logo from "./logo.svg";
 import google from "../../images/google.svg";
 
 // context
-import { useUserDispatch, loginUser,registerUser } from "../../context/UserContext";
+import {useUserDispatch, loginUser, registerUser, useUserState} from "../../context/UserContext";
 
-function Login(props) {
+function Login(props:any) {
   var classes = useStyles();
 
   // global
   var userDispatch = useUserDispatch();
+  var { isAuthenticated,userInfo } = useUserState();
+
 
   // local
   var [isLoading, setIsLoading] = useState(false);
@@ -36,6 +48,28 @@ function Login(props) {
   var [loginValue, setLoginValue] = useState("");
   var [phoneValue, setPhoneValue] = useState("");
   var [passwordValue, setPasswordValue] = useState("");
+
+
+
+
+  if(isAuthenticated){
+
+    window.location.href='/admin/dashboard';
+
+  }
+
+  const options:IAuthorizationOptions = {
+      clientId: '338031830251-4o6r09j9307ps5nv5r47s9bb3g11ggq5.apps.googleusercontent.com',
+      redirectUri: "http://localhost:3000",
+      scopes: ["openid", "profile", "email","phone"],
+      includeGrantedScopes: true,
+      accessType: "offline",
+};
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
+
 
   return (
     <Grid container className={classes.container}>
@@ -64,6 +98,22 @@ function Login(props) {
                 <img src={google} alt="google" className={classes.googleIcon} />
                 &nbsp;Sign in with Google
               </Button>
+
+              <GoogleLogin
+                  clientId="338031830251-4o6r09j9307ps5nv5r47s9bb3g11ggq5.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy="single_host_origin"
+                  scope='openid,profile,email'
+              />
+              <GoogleButton
+                  placeholder="demo/search.png"
+                  options={options}
+                  apiUrl="http://localhost:3000"
+                  defaultStyle={true}
+              />
+
               <div className={classes.formDividerContainer}>
                 <div className={classes.formDivider} />
                 <Typography className={classes.formDividerWord}>or</Typography>

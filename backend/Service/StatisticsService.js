@@ -6,6 +6,7 @@ const Op = Sequelize.Op;
 const TODAY_START = new Date().setHours(0, 0, 0, 0);
 const NOW = new Date();
 const moment = require('moment'); // require
+const common= require('../utils/common');
 
 
 const getTotalData = async (req,con) =>{
@@ -214,8 +215,9 @@ const GetRecentVotes = async (con) =>{
 
     RecentVote=RecentVote.map((val,key)=>{
        let data={};
-       data['name']=val.userData.name;
-       data['email']=val.userData.email;
+       data['name']= val.userData.name;
+       data['email']=common.GetMaskedData(val.userData.email);
+       data['phone']=common.GetMaskedData(val.userData.phone);
        data['country']=val.country;
        data['state']=val.state;
        data['city']=val.city;

@@ -6,6 +6,7 @@ const {encode}= require('html-entities');
 const lzwCompress =require('lzwcompress');
 const {getIpDetails,getAddressFromLocationId} = require('../utils/helpers')
 const ip = require('ip');
+const common=require('../utils/common')
 
 
 
@@ -32,8 +33,8 @@ const GetVotedUser = asynchandler( async (req,res)=>{
 
          let d={};
          d['Name']=val.userData.name;
-         d['Email']=val.userData.email;
-         d['Phone_No']=val.userData.phone;
+         d['Email']=common.GetMaskedData(val.userData.email);
+         d['Phone_No']=common.GetMaskedData(val.userData.phone);
          d['Campaign']=val.campaignData.name;
          d['country']=val.country;
          d['city']=val.city;

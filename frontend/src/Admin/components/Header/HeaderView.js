@@ -208,7 +208,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
             </div>
           </MenuItem>
         ))}
-        <Fab
+        <Fabask
           variant="extended"
           color="primary"
           aria-label="Add"
@@ -216,7 +216,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         >
           Send New Message
           <SendIcon className={classes.sendButtonIcon} />
-        </Fab>
+        </Fabask>
       </Menu>
       <Menu
         id="notifications-menu"
@@ -266,22 +266,8 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         >
           <AccountIcon className={classes.profileMenuIcon} /> Profile
         </MenuItem>
-        <MenuItem
-          className={classNames(
-            classes.profileMenuItem,
-            classes.headerMenuItem
-          )}
-        >
-          <AccountIcon className={classes.profileMenuIcon} /> Tasks
-        </MenuItem>
-        <MenuItem
-          className={classNames(
-            classes.profileMenuItem,
-            classes.headerMenuItem
-          )}
-        >
-          <AccountIcon className={classes.profileMenuIcon} /> Messages
-        </MenuItem>
+
+
         <div className={classes.profileMenuUser}>
           <Typography
             className={classes.profileMenuLink}

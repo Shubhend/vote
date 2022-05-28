@@ -1,5 +1,31 @@
 const asynchandler = require("express-async-handler");
 const Modal = require('../config/config');
+var nodemailer = require('nodemailer');
+const {MailEventEmitter} = require('./../Service/MailService')
+
+
+const Support = async (req,res) =>{
+
+    await Modal.Support.create(req.body);
+
+    res.send({msg:"Request Accepted"});
+
+    return true;
+
+}
+
+
+const sendMail = asynchandler(async(req,res)=>{
+
+
+
+    MailEventEmitter.emit('test');
+
+
+    res.send({datta:"done"});
+    return true;
+
+})
 
 const getCountry = asynchandler(
     async (req,res)=>{
@@ -28,6 +54,11 @@ const getCategory = asynchandler(
 )
 
 
+
+
+
+
+
 const getState = asynchandler(async (req,res)=>{
 
 
@@ -51,4 +82,4 @@ const getCity = asynchandler(async (req,res)=>{
     }
 )
 
-module.exports={getCountry,getCategory,getState,getCity};
+module.exports={getCountry,getCategory,getState,getCity,sendMail,Support};
