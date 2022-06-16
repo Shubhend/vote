@@ -10,6 +10,8 @@ import DOMPurify from 'dompurify';
 import {decode} from 'html-entities';
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
+import moment from 'moment';
+import Container from "@material-ui/core/Container";
 
 
 
@@ -67,6 +69,8 @@ useEffect( async ()=>{
 
 
     UpdateTraffic({campaignId:params.campId,impression:1,type:'im'});
+
+
 
     }
 
@@ -159,6 +163,9 @@ return (
 
 
                                 </div>
+                                {
+                                    campaign && campaign.userData && (
+
                                 <div className="col-lg-6 text-left col-md-12 pad-top-lg-200 pad-bottom-lg-100 pad-top-100 pad-bottom-75 ps-md--5">
                                     <h4 className="text-danger font-xssss fw-700 ls-2">Online Voting</h4>
                                     <h2 className="fw-700 text-grey-900 display1-size lh-3 porduct-title display2-md-size"> {campaign.name} </h2>
@@ -172,13 +179,15 @@ return (
                                         <li  alt="star" className="fa fa-star w15 float-left" style={{color:'yellow'}} ></li>
                                       
                                     </div>
-                                  
+
+
                                     <div className="clearfix"></div>
                                     <p className="font-xsss fw-400 text-grey-500 lh-30 pe-5 mt-3 me-5">
                                     {campaign.title}</p>
 
 
                                     <div className="clearfix"></div>
+
                                     <ul className="product-feature-list mt-5">
                                         <li className="w-50 lh-32 font-xsss text-grey-500 fw-500 float-left"><b className="text-grey-900"> Category : </b></li>
                                         <li className="w-50 lh-32 font-xsss text-grey-500 fw-500 float-left">{campaign.categoryData.name}</li> 
@@ -195,8 +204,16 @@ return (
                                             return (<span> {val.id},</span>)
                                         }): null
 
-                                        
+
                                         }</li>
+
+                                        <li className="w-50 lh-32 font-xsss text-grey-500 fw-500 float-left"><b className="text-grey-900"> CreatedOn : </b></li>
+                                        <li className="w-50 lh-32 font-xsss text-grey-500 fw-500 float-left">{moment(campaign.createdAt).fromNow()}</li>
+
+                                        <li className="w-50 lh-32 font-xsss text-grey-500 fw-500 float-left"><b className="text-grey-900"> Created By : </b></li>
+                                        <li className="w-50 lh-32 font-xsss text-grey-500 fw-500 float-left">{campaign.userData.name}</li>
+
+
                                     </ul>
 
                                     <div className="clearfix"></div>  
@@ -208,8 +225,12 @@ return (
                                     </center>
 
                                 </div>
-                            </div>
 
+                                    )
+                                }
+                                    </div>
+
+                            <Container maxWidth="lg" className={classes.blogsContainer}>
 
                             <div className="row bg-white mt-4 m-3">
 
@@ -220,6 +241,9 @@ return (
 
 
                             </div>
+
+                            </Container>
+
                         </div>               
                     </div>
                 </div>

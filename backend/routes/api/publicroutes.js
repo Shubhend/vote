@@ -5,7 +5,7 @@ const async = require('express-async-handler');
 const { updateTraffic } = require('../../controller/CampaignTrafficController.js');
 
 
-const {getCountry,getCategory,getState,getCity,sendMail,Support} = require('../../controller/PublicController')
+const {getCountry,getCategory,getState,getCity,sendMail,Support,getCampaign} = require('../../controller/PublicController')
 const {RawTraffic} = require('../../controller/RawTraffic.js');
 const {protect} = require("../../middleware/auth");
 const router = Express.Router();
@@ -18,6 +18,7 @@ router.post('/updateTraffic',updateTraffic);
 router.post('/rawTraffic',RawTraffic);
 router.get('/sendMail',sendMail);
 router.post('/support',Support);
+router.post('/getCampaign',getCampaign);
 
 
 

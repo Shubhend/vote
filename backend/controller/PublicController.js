@@ -2,6 +2,7 @@ const asynchandler = require("express-async-handler");
 const Modal = require('../config/config');
 var nodemailer = require('nodemailer');
 const {MailEventEmitter} = require('./../Service/MailService')
+const {CheckmediaImage, GetSimpleImage} = require("../Service/AssetsService");
 
 
 const Support = async (req,res) =>{
@@ -13,6 +14,45 @@ const Support = async (req,res) =>{
     return true;
 
 }
+
+
+
+const getCampaign = asynchandler(
+    async (req,res)=>{
+
+        const whereCon={status:1};
+
+        const data = await Modal.campaign.findAll({
+            include:[
+                {model:Modal.campaignmedia,as:'mediaData'},
+                {model:Modal.user,as:'userData'}
+            ],
+
+            where:whereCon});
+        if(data){
+
+            var count=data.length;
+
+            const media={};
+
+            const requests= data.map(async (val1) => {
+
+
+                media[val1.id]= await  GetSimpleImage(val1.mediaData);
+
+            });
+
+
+            const rest=await Promise.all(requests);
+
+            res.json({'campaign':data,'media':media,'count':count})
+
+            // console.log(result);
+
+        }
+
+    }
+)
 
 
 const sendMail = asynchandler(async(req,res)=>{
@@ -82,4 +122,4 @@ const getCity = asynchandler(async (req,res)=>{
     }
 )
 
-module.exports={getCountry,getCategory,getState,getCity,sendMail,Support};
+module.exports={getCountry,getCategory,getState,getCity,sendMail,Support,getCampaign};

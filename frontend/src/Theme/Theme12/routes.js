@@ -129,7 +129,6 @@ const Allroutes =[
         'path': '/:campId',
         'action': Detail,
         'display': false,
-        'showOnLogin': true,
         'position': 1,
         'icon': 'feather-user btn-round-md bg-primary-gradiant me-3'
     },

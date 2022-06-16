@@ -105,7 +105,7 @@ function Login(props:any) {
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                   cookiePolicy="single_host_origin"
-                  scope='openid,profile,email'
+
               />
               <GoogleButton
                   placeholder="demo/search.png"

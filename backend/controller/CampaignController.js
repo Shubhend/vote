@@ -143,6 +143,7 @@ const getCampaignByUniqueId = asynchandler( async (req,res)=>{
         {model: Modal.country,as: 'countryData' },
         {model: Modal.state,as: 'stateData' },
         {model: Modal.city,as: 'cityData' },
+        {model:Modal.user,as:'userData'}
     ],
     where:{uniqueId:id} });
 

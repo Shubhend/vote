@@ -13,6 +13,16 @@ export  const GetCountry = async () =>{
 
 
 
+export  const GetCampaign = async (value) =>{
+
+        const config = HEADERCONFIG;
+        const data= await axiosHelper.post('/api/public/getCampaign',value, config);
+
+        return data;
+}
+
+
+
 export const Support = async (value) =>{
 
         const config = HEADERCONFIG;
